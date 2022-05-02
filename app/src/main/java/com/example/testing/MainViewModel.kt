@@ -10,15 +10,17 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {
     var numberUserDateAccount= MutableLiveData<Int>(0)
-    var accountCount:LiveData<Int>
+    var accountCount:LiveData<Int>?
     var saveButtonEnabled=MutableLiveData<Boolean>(true)
-    var nextButtonEnabled= MutableLiveData<Boolean>(true)
+    var nextButtonEnabled= MutableLiveData<Boolean>(false)
     var nextButtonOnShowAccount=MutableLiveData<Boolean>(true)
     var prevButton=MutableLiveData<Boolean>(true)
 
     init {
-        AccountRepository.initDB(app)
+        AccountRepository.initDB(app.applicationContext)
         accountCount=AccountRepository.getAccountCount()
+        if (AccountRepository.getAccounts()?.size==1)
+            nextButtonEnabled.value=false
 
     }
    fun saveInformation(accountEntity: AccountEntity){
@@ -27,6 +29,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
    }
     fun saveButton(){
         saveButtonEnabled.value=false
+        nextButtonEnabled.value=true
     }
     fun nextButtonCreateAcccount(){
         numberUserDateAccount.value=numberUserDateAccount.value?.plus(1)
@@ -36,7 +39,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
     fun nextButtonShowAccount(){
         numberUserDateAccount.value=numberUserDateAccount.value?.plus(1)
-        if(numberUserDateAccount.value==accountCount.value){
+        if(numberUserDateAccount.value==accountCount?.value){
             nextButtonOnShowAccount.value=false
         }
     }

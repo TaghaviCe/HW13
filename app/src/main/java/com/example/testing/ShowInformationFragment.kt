@@ -49,6 +49,9 @@ class ShowInformationFragment : Fragment() {
         binding.buttonChange.setOnClickListener {
             findNavController().navigate(R.id.action_nav_show_information_to_nav_home)
         }
+        binding.buttonGO.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_show_information_to_nav_create_account)
+        }
 
     }
 

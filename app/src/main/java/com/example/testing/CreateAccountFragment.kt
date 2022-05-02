@@ -42,28 +42,31 @@ class CreateAccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.NextButton.isEnabled=false
         val sharedPreferences =requireActivity().getSharedPreferences("myInformation",
-            Context.MODE_PRIVATE
+           Context.MODE_PRIVATE
         )
 
         var accountCount= sharedPreferences.getString("accountCount", "")?.toInt()
-        binding.SaveButton.setOnClickListener {
-            creditCard = binding.CreditCardNumber.text.toString()
-            userBalance = binding.AccountBalance.text.toString()
-            var AccountType: AccountType =
-                if (binding.radioButtonLong.isChecked) {
-                    AccountType.Long
-                } else {
-                    AccountType.Short
-                }
-            var addAccount = AccountEntity(creditCard, userBalance, AccountType)
-            viewModel.saveInformation(addAccount)
-            viewModel.saveButton()
-        }
+        if(accountCount!=null) {
+            binding.SaveButton.setOnClickListener {
+                creditCard = binding.CreditCardNumber.text.toString()
+                userBalance = binding.AccountBalance.text.toString()
+                var AccountType: AccountType =
+                    if (binding.radioButtonLong.isChecked) {
+                        AccountType.Long
+                    } else {
+                        AccountType.Short
+                    }
+                var addAccount = AccountEntity(creditCard, userBalance, AccountType)
+                viewModel.saveInformation(addAccount)
+                viewModel.saveButton()
+            }
 
-        binding.NextButton.setOnClickListener {
-            viewModel.nextButtonCreateAcccount()
-            clearInformation()
+            binding.NextButton.setOnClickListener {
+                viewModel.nextButtonCreateAcccount()
+                clearInformation()
+            }
         }
 
         val buttonSaveObservable=Observer<Boolean>{
@@ -74,13 +77,20 @@ class CreateAccountFragment : Fragment() {
         }
         val numberAccountObserver= Observer<Int> {
             binding.accountCount.setText(it.toString())
-            if(it==accountCount){
+            //if(it==accountCount){
                 findNavController().navigate(R.id.action_nav_create_account_to_nav_show_account)
-            }
+           // }
         }
+//        viewModel.numberUserDateAccount.observe(viewLifecycleOwner){number->
+//            if (number == accountCount!!) {
+//                Toast.makeText(requireContext(), "all accounts saved", Toast.LENGTH_SHORT)
+//                    .show()
+//                findNavController().navigate(R.id.action_nav_create_account_to_nav_show_account)
+//            }
+//        }
         viewModel.saveButtonEnabled.observe(viewLifecycleOwner,buttonSaveObservable)
-        viewModel.nextButtonEnabled.observe(viewLifecycleOwner,buttonNextObserver)
-        viewModel.numberUserDateAccount.observe(viewLifecycleOwner,numberAccountObserver)
+      //   viewModel.nextButtonEnabled.observe(viewLifecycleOwner,buttonNextObserver)
+      //  viewModel.numberUserDateAccount.observe(viewLifecycleOwner,numberAccountObserver)
 
 
 
@@ -93,8 +103,4 @@ class CreateAccountFragment : Fragment() {
         binding.radioButtonShort.isChecked=false
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
