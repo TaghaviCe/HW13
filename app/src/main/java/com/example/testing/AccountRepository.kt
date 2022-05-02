@@ -6,9 +6,10 @@ import androidx.lifecycle.LiveData
 object AccountRepository {
      var db:AppDatabase?=null
     var accountCount=0
+    var accountDao:AccountDao?=null
      fun initDB(context: Context) {
          db = AppDatabase.getAppDataBase(context)
-         var accountDao = db?.accountDao()
+        accountDao = db?.accountDao()
      }
     fun inserAccount(accountEntity: AccountEntity){
         return db?.accountDao()!!.insertAccount(accountEntity)

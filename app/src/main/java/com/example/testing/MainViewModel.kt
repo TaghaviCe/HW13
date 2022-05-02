@@ -35,9 +35,21 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     }
     fun nextButtonShowAccount(){
-        numberUserDateAccount.value=numberUserDateAccount.value?.minus(1)
-        if(numberUserDateAccount==accountCount){
+        numberUserDateAccount.value=numberUserDateAccount.value?.plus(1)
+        if(numberUserDateAccount.value==accountCount.value){
             nextButtonOnShowAccount.value=false
         }
+    }
+    fun prevButtonShowAccount(){
+        numberUserDateAccount.value=numberUserDateAccount.value?.minus(1)
+        if(numberUserDateAccount.value==0){
+            prevButton.value=false
+        }
+    }
+    fun getAllAccount():List<AccountEntity>{
+        return AccountRepository.accountDao!!.getAllAccounts()
+    }
+    fun getAccount(number: Number):AccountEntity?{
+        return AccountRepository.accountDao?.getAccount(number.toString())
     }
 }

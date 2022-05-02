@@ -8,21 +8,21 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/credit_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="Credit Card Number" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/balance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="Balances" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/accountType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
@@ -34,7 +34,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/Save_button"
+            android:id="@+id/Next_button"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,7 +43,7 @@
 
 
         <Button
-            android:id="@+id/Next_button"
+            android:id="@+id/Prev_button"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
