@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="فرم ثبت اطلاعات "
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="نام و نام خانوادگی "
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/codeMelli"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:maxLength="10"
+        android:inputType="numberDecimal"
+        android:layout_margin="10dp"
+        android:hint="کد ملی "/>
+
+    <EditText
+        android:id="@+id/father_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="نام پدر"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="شماره تلفن"
+        android:inputType="number"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/codePostal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="کد پستی "
+        android:inputType="number"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/AccountCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="جنسیت"
+        android:gravity="right"
+        android:layout_margin="10dp"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left"
+        android:layout_margin="10dp"
+        android:id="@+id/buttonGroup"
+        >
+
+        <RadioButton
+            android:id="@+id/buttonMen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مرد"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+
+            />
+
+        <RadioButton
+            android:id="@+id/radioWomen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="زن"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ثبت اطلاعات "
+        android:layout_margin="5dp"
+
+        />
+</LinearLayout>

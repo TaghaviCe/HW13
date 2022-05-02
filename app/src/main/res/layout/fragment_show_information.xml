@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowInformationFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="اطلاعات شما "
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/editTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="نام و نام خانوادگی "
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/fatherName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_margin="10dp"
+        android:hint="نام پدر"/>
+
+
+    <TextView
+        android:id="@+id/codePostal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="کد پستی "
+        android:inputType="text"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="شماره تلفن"
+        android:inputType="numberDecimal"
+        android:layout_margin="10dp"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="تعداد حساب"
+        android:id="@+id/account_count"
+        />
+    <Button
+        android:id="@+id/buttonChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="تغییر اطلاعات " />
+</LinearLayout>
