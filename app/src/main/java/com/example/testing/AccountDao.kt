@@ -11,7 +11,7 @@ interface AccountDao {
     fun getAllAccounts():List<AccountEntity>
 
     @Query("SELECT * FROM AccountEntity WHERE cardNumber IN (:cardNum)")
-    fun getAccount(cardNum:String):AccountEntity
+    fun getAccount(cardNum:Int):AccountEntity
 
     @Insert
     fun insertAccount(account:AccountEntity)

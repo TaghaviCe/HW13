@@ -76,7 +76,7 @@ class CreateAccountFragment : Fragment() {
             binding.NextButton.isEnabled=it
         }
         val numberAccountObserver= Observer<Int> {
-            binding.accountCount.setText(it.toString())
+            binding.accountCount.text = it.toString()
             if(it==accountCount){
                 findNavController().navigate(R.id.action_nav_create_account_to_nav_show_account)
            }

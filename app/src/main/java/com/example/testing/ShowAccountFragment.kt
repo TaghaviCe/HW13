@@ -18,12 +18,6 @@ class ShowAccountFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,28 +30,42 @@ class ShowAccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var account:AccountEntity?
+
         binding.NextButton.setOnClickListener {
             viewModel.nextButtonShowAccount()
         }
+
         binding.PrevButton.setOnClickListener {
             viewModel.prevButtonShowAccount()
         }
+
         val numberData=Observer<Int>{
-            if(viewModel.getAllAccount().size!=0){
-                account = viewModel.getAccount(it)
+            if(viewModel.getAllAccount()?.size!=0){
+                account = viewModel.getAllAccount()?.get(it)
                 initView(account!!)
             }else{
                 binding.NextButton.isEnabled=false
             }
         }
+
+        val nextButtonObserver= Observer<Boolean> {
+            binding.NextButton.isEnabled=it
+        }
+
+        val prevButtonObserver= Observer<Boolean> {
+            binding.PrevButton.isEnabled=it
+        }
+
+        viewModel.prevButton.observe(viewLifecycleOwner,prevButtonObserver)
+        viewModel.nextButtonOnShowAccount.observe(viewLifecycleOwner,nextButtonObserver)
         viewModel.numberUserDateAccount.observe(viewLifecycleOwner,numberData)
 
 
     }
-    fun initView(accountEntity: AccountEntity){
-        binding.creditNumber.setText(accountEntity.cardNumber)
-        binding.balance.setText(accountEntity.accBalance)
-        binding.accountType.setText(accountEntity.accType.toString())
+   private fun initView(accountEntity: AccountEntity){
+        binding.creditNumber.text = accountEntity.cardNumber
+        binding.balance.text = accountEntity.accBalance
+        binding.accountType.text = accountEntity.accType.toString()
     }
 
 

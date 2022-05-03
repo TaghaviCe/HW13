@@ -42,6 +42,7 @@
         android:name="com.example.testing.ShowAccountFragment"
         android:label="fragment_show_account"
         tools:layout="@layout/fragment_show_account" />
+
     <fragment
         android:id="@+id/nav_select_account"
         android:name="com.example.testing.SelectAccountFragment"

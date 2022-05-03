@@ -49,10 +49,10 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             prevButton.value=false
         }
     }
-    fun getAllAccount():List<AccountEntity>{
-        return AccountRepository.accountDao!!.getAllAccounts()
+    fun getAllAccount():List<AccountEntity>?{
+        return AccountRepository.accountDao?.getAllAccounts()
     }
-    fun getAccount(number: Number):AccountEntity?{
-        return AccountRepository.accountDao?.getAccount(number.toString())
+    fun getAccount(number: Int):AccountEntity?{
+        return AccountRepository.accountDao?.getAccount(number)
     }
 }
